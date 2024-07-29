@@ -1,11 +1,12 @@
 import './index.css';
 import { TermCard } from './TermCard';
 import { createRoot } from 'react-dom/client';
+import { TermList } from './TermList';
 
 
 const descriptionList = document.getElementById('description-list');
 const reactRoot = createRoot(descriptionList);
-reactRoot.render(<TermCard />);
+reactRoot.render(<TermList />);
 
 //не будет работать
 // descriptionList.append(<TermCard />);
