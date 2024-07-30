@@ -1,5 +1,10 @@
 import "./TermCard.css";
-export const TermCard = ({ title, description }) => {
+export const TermCard = ({ title, description, onDelete, id }) => {
+
+    const handleDeleteClick = () => {
+        // console.log("Удалить");
+        onDelete(id);
+    };
 
     return (
         <div 
@@ -8,6 +13,7 @@ export const TermCard = ({ title, description }) => {
             <h2 className="term-card__title">{title}</h2>
             {/* {description ? (<p className="term-card__description">{description}</p>) : null} */}
             {description && (<p className="term-card__description">{description}</p>)}
+            <button type="button" className="term-card__delete" onClick={handleDeleteClick}>Удалить</button>
         </div>
     );
 }

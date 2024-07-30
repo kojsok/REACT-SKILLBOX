@@ -18,7 +18,7 @@ import './TermList.css';
 
 //теперь сделаем так что бы компонент термлист обрабатывал входящий 
 //проп в виде списка из main.jsx
-export const TermList = ({terms}) => {
+export const TermList = ({terms, onDelete}) => {
     return (
     <ul className="term-list">
         {terms.map((item) => (
@@ -27,6 +27,8 @@ export const TermList = ({terms}) => {
                 <TermCard
                     title={item.title}
                     description={item.description}
+                    onDelete={onDelete} //получаем обработчик из пропсов и передаем дочернему элементу тк термлист это не хтмл элемент
+                    id={item.id} 
                 />
             </li>
         ))}
