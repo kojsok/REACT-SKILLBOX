@@ -6,3 +6,19 @@
     flex-direction: column;
     gap: 8px;
 }
+
+
+/* добавляем анимацию */
+@keyframes appearance {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* можно без ease-in-out */
+.term-list__item {
+    animation: appearance 500ms ease-in-out;
+}

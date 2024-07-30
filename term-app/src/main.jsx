@@ -3,10 +3,30 @@ import { TermCard } from './TermCard';
 import { createRoot } from 'react-dom/client';
 import { TermList } from './TermList';
 
+//добавим массив терминов
+let terms = [];
+
+//добавим функцию для добавления терминов
+function addTerm(title, description) {
+  terms.push(
+    {
+      //добавляем уникальный индентификатор для ключа
+      id: crypto.randomUUID(),  //Date.now() еще можно использовать
+      title,
+      description,
+    });
+    //добавляем сортировку терминов по алфавиту
+   terms.sort((term1, term2) => (term1.title > term2.title ? 1 : -1));
+   //добавляем рендеринг нашего компонента
+   reactRoot.render(<TermList terms={terms} />);
+} 
+
 
 const descriptionList = document.getElementById('description-list');
 const reactRoot = createRoot(descriptionList);
-reactRoot.render(<TermList />);
+
+//передаем список в качестве пропса в термлист
+reactRoot.render(<TermList terms={terms} />);
 
 //не будет работать
 // descriptionList.append(<TermCard />);
@@ -25,5 +45,6 @@ form.addEventListener('submit', (event) => {
   form.reset();
 
   // Выводим термин в консоль
-  console.log(title, description);
+  // console.log(title, description);
+  addTerm(title, description);
 });
